@@ -6,12 +6,11 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 
 // Admin pages
-import AdminDashboard from "./pages/AdminDashboard.jsx";   // new overview page
-import AdminProducts from "./pages/Adminproducts.jsx";     // renamed product manager
+import AdminDashboard from "./pages/AdminDashboard.jsx";   // overview page
+import AdminProducts from "./pages/Adminproducts.jsx";     // product manager
 import AdminOrders from "./pages/Adminorder.jsx";
 import AdminUsers from "./pages/Adminuser.jsx";
-
-// import PrivateRoute from "./components/PrivateRoute.jsx";
+// import PrivateRoute from "./components/PrivateRoute.jsx";  // removed
 import "./App.css";
 
 export default function App() {
@@ -25,45 +24,13 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Admin routes – all protected */}
-        <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute adminOnly>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin/products"
-          element={
-            <PrivateRoute adminOnly>
-              <AdminProducts />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin/orders"
-          element={
-            <PrivateRoute adminOnly>
-              <AdminOrders />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin/users"
-          element={
-            <PrivateRoute adminOnly>
-              <AdminUsers />
-            </PrivateRoute>
-          }
-        />
+        {/* Admin routes – temporarily unprotected */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
 
         {/* Optional: redirect /admin to dashboard */}
-        <Route
-          path="/admin"
-          element={<Navigate to="/admin/dashboard" replace />}
-        />
       </Routes>
     </>
   );
